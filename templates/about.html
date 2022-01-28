@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- document_head.html -->
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Senior Capstone</title>
+</head>
+
+<body>
+<div id="particles-js"></div>
+<div id="header">
+    <b>About</b>
+</div>
+
+<!-- Simple Nav Bar -->
+<nav class="center">
+    <a class="nav" href="{{url_for('main_page')}}">Main</a>
+    <a class="nav" href="{{url_for('about_page')}}">About</a>
+</nav>
+
+<div class="card-stack">
+    <!-- Container with Explanations and Diagrams -->
+    <div class="card card-container">
+        <div class="card-med">
+
+            <h3>Flow Diagram of Program:</h3>
+            <img class="shrink" src="{{ url_for('static', filename= 'images/flowdiagram.png') }}"
+                 alt="Program Flow Diagram">
+
+            <h3>Flow Diagram of System:</h3>
+            <img class="shrink" src="{{ url_for('static', filename= 'images/systemdiagram.png') }}"
+                 alt="System Flow Diagram">
+
+            <h3>Explanation:</h3>
+            <h4>What is Reinforcement Learning?</h4>
+            <p>Reinforcement Learning (RL) is a type of Machine Learning. It is simply teaching a computer
+                how to do something based on experiences and rewards. Think of a human experience: a child sees and
+                touches something bright-red and gets
+                a small burn. From this experience they learn that bright-red objects can sometimes be hot. This is an
+                experience with a chosen action, a subsequent outcome, and a reward (in this case, a punishment).
+            </p>
+            <p>In RL, a computer, or more specifically: an agent, can learn by leveraging probability. If
+                touching a bright red object leads to a painful burn 75% of the time, then the agent is less likely to
+                do that.
+            </p>
+
+            <h4>How does the agent learn?</h4>
+            <p>The agent learns by utilizing a mathematical framework known as the Markov Decision Process. The agent,
+                specific to this project, is trained in an environment that simulates rain and irrigation effects. From
+                this environment, it learns that the chance of rain affects soil moisture.
+                If there is a higher chance of the rain, the plants will need watered less or maybe not at all. If there
+                is a lower chance of rain, the plants will likely need watered. It also learns that the
+                action it chooses impacts soil moisture. Action 0 doesn't impact soil moisture at all, but the other
+                actions do have varying impacts.
+            </p>
+            <img src="{{ url_for('static', filename= 'images/mdp.png') }}" alt="Markov Decision Process">
+            <p>The target soil moisture for the agent is between 40% and 60%. The agent learns that anything outside
+                this moisture range is not optimal. It knows the optimal range because every time an action is decided,
+                the agent is rewarded or punished. If the agent waters the plants and the soil moisture is not optimal,
+                it will be punished by losing points. If the agent correctly waters the plants, it is rewarded points.
+            </p>
+            <p>
+                The agent will begin to accrue experiences from this reward experience. These experiences are stored as
+                probability tables. As more experiences are acquired, these probabilities will continue to change.
+            </p>
+
+            <h4>What can the agent do?</h4>
+            <p>The moisture can be altered using 5 different actions. The first action is not doing anything, Action 0.
+                All other actions are increasing variations of water to distribute, with Action 1 being a little water
+                and Action 4 being a lot of water.</p>
+            <p> Looking at the graph below, it can be determined that the agent does not prefer Action 2 (green dot;
+                light water) in any
+                scenario. Also, Action 0
+                (blacks dot; no water) is highly favored once the soil moisture goes above 60%. Conversely, Action
+                4 (red dot; heavy water) is highly favored when the soil moisture goes below 20%.
+            </p>
+            <img src="{{ url_for('static', filename= 'images/action_map.png') }}" alt="SIS Pre-Trained Action Map">
+            <p>The agent takes in the chance of rain via OpenWeather API. It takes in soil moisture via capacitive
+                probes inserted at the base of the plants. Referring to its previous experiences learned from the
+                training environment, the agent decides what action it should take. This action comes with a confidence
+                factor.
+            </p>
+            <p>In certain situations, the agent is likely to be more confident than others. If the soil moisture is very
+                low and there is no chance of rain, the agent will likely be very confident in its decision to
+                water.
+            </p>
+
+            <h3>Resources:</h3>
+            <ul>
+                <li><a class="resource" href="https://en.wikipedia.org/wiki/Markov_decision_process">Wikipedia</a>:
+                    Markov Decision Process<br></li>
+                <li><a class="resource" href="https://www.youtube.com/watch?v=bD6V3rcr_54">YouTube</a>: Deep
+                    Reinforcement Learning with OpenAI
+                    Gym and Python
+                </li>
+                <li><a class="resource" href="https://www.youtube.com/watch?v=VGCHcgmZu24">YouTube</a>: Developing a
+                    Sequential Model with
+                    Keras
+                </li>
+                <li><a class="resource" href="https://github.com/openai/gym">OpenAI/Gym</a>: Python packages for Machine
+                    Learning
+                </li>
+                <li><a class="resource" href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a>: Python back-end
+                    framework
+                </li>
+                <li><a class="resource" href="https://openweathermap.org/api">OpenWeather API</a>: Weather Data</li>
+                <li><a class="resource" href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/">Raspberry Pi
+                    4</a>: Compact,
+                    single-board computer
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='scripts/particles.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/app.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap');
+
+body {
+    box-sizing: border-box;
+    font-family: 'Zilla Slab', serif;
+    color: black;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+    background: #0BA8E6;
+    color: black;
+}
+
+#header {
+	margin: 0 8vw;
+	padding-top: 4vh;
+	text-align: center;
+	color: black;
+	border-bottom: 1px solid white;
+	font-size: 45px;
+}
+
+.card-stack {
+	display: flex;
+	max-width: 1200px;
+	margin: auto;
+	flex-direction: column;
+	padding: 40px;
+	align-items: center;
+	color: black;
+}
+
+.card-container {
+	width: 100%;
+	display: inline-flex;
+	color: black;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 10px;
+	flex-wrap: wrap;
+}
+
+.card-button {
+    background: rgba(11, 168, 230, 0.65);
+	flex: 1 1 auto;
+}
+
+.card-small {
+    background: rgba(11, 168, 230, 0.65);
+	flex: 1 1 auto;
+	text-align: center;
+}
+
+.card-med {
+	flex: 1 1 auto;
+	margin: 10px;
+	text-align: center;
+	color: black;
+	font-size: 20px;
+	background: rgba(11, 168, 230, 0.65);
+}
+
+.card-large {
+    background: rgba(11, 168, 230, 0.65);
+	flex: 3 1 480px;
+}
+
+.card {
+	margin: 20px;
+	text-align: center;
+	color: black;
+	font-size: 20px;
+	border: 2px solid white;
+	border-radius: 5px;
+	background: rgba(11, 168, 230, 0.65);
+	padding: 10px;
+}
+
+.summary{
+    text-align: left;
+}
+
+.weathercard {
+    font-size: 20px;
+    display: inline-block;
+    border: 2px solid white;
+    border-radius: 5px;
+    border-collapse: collapse;
+    background: rgba(11, 168, 230, 0.65);
+}
+
+.buttontable {
+    font-size: 20px;
+    display: inline-block;
+    border: 2px solid white;
+    border-collapse: collapse;
+   	background: rgba(11, 168, 230, 0.65);
+    border-radius: 5px;
+}
+
+.button1, .button2, .button3{
+    font-family: 'Zilla Slab', serif;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 5px 10px;
+	width: 200px;
+	border-radius: 5px;
+}
+
+.button1 {
+    background: rgba(0, 255, 0);
+}
+
+.button2 {
+    background: rgba(255, 255, 0);
+}
+
+.button3 {
+    background: rgba(255, 0, 0);
+}
+
+th,td {
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 5px;
+}
+
+td {
+    padding: 10px;
+}
+
+a.nav {
+    display: inline-block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    background: rgba(11, 168, 230, 0.85);
+    border: 1px solid white;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+a.nav:hover {
+    background-color: #555;
+    color: white;
+}
+
+a.resource:link {
+    color: #000;
+    text-decoration: none;
+    border: 1px solid white;
+	border-radius: 5px;
+	overflow: hidden;
+	padding: 2px;
+}
+
+a.resource:hover {
+    background-color: #555;
+    color: white;
+}
+
+a.resource:visited {
+    background-color: #555;
+    color: black;
+    border: 1px solid white;
+    text-decoration: none;
+    overflow: hidden;
+    padding: 2px;
+}
+
+a.resource:active {
+    background-color: #000;
+    color: white;
+    text-decoration: none;
+}
+
+.center {
+    padding-top: 3vh;
+    text-align: center;
+    font-size: 20px;
+}
+
+li {
+    padding: 5px 0px;
+}
+
+ul {
+      list-style-type: none;
+}
+
+img.shrink {
+    max-width: 800px;
+}
+
+p {
+    margin: 20px 100px;
+}
+
+div.update {
+    font-size: 25px;
+    margin: 20px;
+	text-align: center;
+	color: black;
+	border: 2px solid white;
+	border-radius: 5px;
+	background: rgba(11, 168, 230, 0.75);
+	padding: 10px 0px;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+caption {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.icon{
+    background-color: #A9A9A9;
+    border: 3px solid rgb(11, 68, 130);
+    border-radius: 5px;
+}

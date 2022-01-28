@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!-- document_head.html -->
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Senior Capstone</title>
+</head>
+
+<body>
+<div id="particles-js"></div>
+<div id="header">
+    <b>Smart Irrigation System (SIS) Dashboard</b>
+</div>
+
+<!-- Simple Nav Bar -->
+<nav class="center">
+    <a class="nav" href="{{url_for('main_page')}}">Main</a>
+    <a class="nav" href="{{url_for('about_page')}}">About</a>
+</nav>
+
+<div class="card-stack">
+    <!-- Container for Alert/s, if there is one-->
+    <div id="alert"><div>
+    <div class="update"><b>Last Update:</b> <span id="time">Not Available</span></div>
+
+    <!-- Container with Actions, Current Weather, and Buttons -->
+    <div class="card-container">
+        <!-- Container with Previous/Future Actions -->
+        <div class="card-med">
+            <table class="weathercard">
+                <caption>Decision Table</caption>
+                <tr>
+                    <th></th>
+                    <th>Last Decision</th>
+                    <th>Next Decision</th>
+                </tr>
+                <tr>
+                    <th>Chance of Prec.:</th>
+                    <td id="preCOR">N/A</td>
+                    <td id="curCOR">N/A</td>
+                </tr>
+                <tr>
+                    <th>Avg. Soil Moisture:</th>
+                    <td id="preASM">N/A</td>
+                    <td id="curASM">N/A</td>
+                </tr>
+                <tr>
+                    <th>Plant 1 Soil Moisture:</th>
+                    <td id="preSM1">N/A</td>
+                    <td id="curSM1">N/A</td>
+                </tr>
+                <tr>
+                    <th>Plant 2 Soil Moisture:</th>
+                    <td id="preSM2">N/A</td>
+                    <td id="curSM2">N/A</td>
+                </tr>
+                <tr>
+                    <th>Plant 3 Soil Moisture:</th>
+                    <td id="preSM3">N/A</td>
+                    <td id="curSM3">N/A</td>
+                </tr>
+                <tr>
+                    <th>Action:</th>
+                    <td id="preDEC">N/A</td>
+                    <td id="curDEC">loading...</td>
+                </tr>
+                <tr>
+                    <th>Confidence:</th>
+                    <td id="preCON">N/A</td>
+                    <td id="curCON">loading...</td>
+                </tr>
+                <tr>
+                    <th>Time:</th>
+                    <td id="preTIM">N/A</td>
+                    <td id="curCHA">N/A</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Container with Current Weather -->
+        <div class="card-med">
+            <table class="weathercard">
+                <caption>Current Weather</caption>
+                <tr>
+                    <th>Condition:</th>
+                    <td id="nowDESC">N/A</td>
+                </tr>
+                <tr>
+                    <th>Chance of Prec.:</th>
+                    <td id="nowCOR">N/A</td>
+                </tr>
+                <tr>
+                    <th>Temp. (&degF):</th>
+                    <td id="nowTEMP">N/A</td>
+                </tr>
+                <tr>
+                    <th>Humidity:</th>
+                    <td id="nowHUM">N/A</td>
+                </tr>
+
+            </table>
+        </div>
+        <!-- Container with Buttons -->
+        <div class="card-med">
+            <table class="buttontable">
+                <caption>Override Buttons</caption>
+                <tr>
+                    <td>
+                        <button type="button" class="button1" onclick="">Water Now</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="button2" onclick="">Cancel Water</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="button3" onclick="">DISABLE SYSTEM</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="button1" onclick="server.loadPrediction()">Refresh Page</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Container with Weather Forecast Table -->
+    <div class="card-container">
+        <div class="card-med">
+            <table class="weathercard">
+                <caption>Weather Forecast</caption>
+                <tr>
+                    <th></th>
+                    <th id="day1">N/A</th>
+                    <th id="day2">N/A</th>
+                    <th id="day3">N/A</th>
+                    <th id="day4">N/A</th>
+                    <th id="day5">N/A</th>
+                    <th id="day6">N/A</th>
+                    <th id="day7">N/A</th>
+                    <th id="day8">N/A</th>
+                </tr>
+                <tr>
+                    <th>Condition:</th>
+                    <td id="wea1">N/A</td>
+                    <td id="wea2">N/A</td>
+                    <td id="wea3">N/A</td>
+                    <td id="wea4">N/A</td>
+                    <td id="wea5">N/A</td>
+                    <td id="wea6">N/A</td>
+                    <td id="wea7">N/A</td>
+                    <td id="wea8">N/A</td>
+                </tr>
+                <tr>
+                    <th>Chance of Prec.:</th>
+                    <td id="cop1">N/A</td>
+                    <td id="cop2">N/A</td>
+                    <td id="cop3">N/A</td>
+                    <td id="cop4">N/A</td>
+                    <td id="cop5">N/A</td>
+                    <td id="cop6">N/A</td>
+                    <td id="cop7">N/A</td>
+                    <td id="cop8">N/A</td>
+                </tr>
+                <tr>
+                    <th>High (&degF):</th>
+                    <td id="htem1">N/A</td>
+                    <td id="htem2">N/A</td>
+                    <td id="htem3">N/A</td>
+                    <td id="htem4">N/A</td>
+                    <td id="htem5">N/A</td>
+                    <td id="htem6">N/A</td>
+                    <td id="htem7">N/A</td>
+                    <td id="htem8">N/A</td>
+                </tr>
+                <tr>
+                    <th>Low (&degF):</th>
+                    <td id="ltem1">N/A</td>
+                    <td id="ltem2">N/A</td>
+                    <td id="ltem3">N/A</td>
+                    <td id="ltem4">N/A</td>
+                    <td id="ltem5">N/A</td>
+                    <td id="ltem6">N/A</td>
+                    <td id="ltem7">N/A</td>
+                    <td id="ltem8">N/A</td>
+                </tr>
+                <tr>
+                    <th>Humidity:</th>
+                    <td id="hum1">N/A</td>
+                    <td id="hum2">N/A</td>
+                    <td id="hum3">N/A</td>
+                    <td id="hum4">N/A</td>
+                    <td id="hum5">N/A</td>
+                    <td id="hum6">N/A</td>
+                    <td id="hum7">N/A</td>
+                    <td id="hum8">N/A</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Container with name and class -->
+    <div class="card-small">
+        <h4>Nicholas Harris</h4>
+        <h4>UNCA: CSCI 480/481</h4>
+        <h4>Senior Capstone Project</h4>
+    </div>
+</div>
+<script src="{{url_for('static', filename='scripts/particles.js')}}"></script>
+<script src="{{url_for('static', filename='scripts/app.js')}}"></script>
+    </div>
+</div>
+</body>
+
+</html>
