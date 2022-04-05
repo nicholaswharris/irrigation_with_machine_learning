@@ -5,7 +5,7 @@ main directory files:</br>
      1. app.py is the main program. This should be launched from a Flask environment.</br>
      2. build_model.py is used to create a reinforcement learning model.</br>
      3. loadModel.py is used to simplify loading the model and making predictions.</br>
-     4. updateModel.py is used for updating the model's weight after deployment.
+     4. updateModel.py is used for updating the model's weight after deployment.</br>
      5. senors.ino is the Arduino file that reads data from the sensors.</br>
      6. testArduino.py is to test reading the Arduino from the Raspberry Pi.</br>
      7. testRelay.py is to test controlling the relay/water-pump from the Raspberry Pi.</br>
