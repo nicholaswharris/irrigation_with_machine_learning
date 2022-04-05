@@ -10,14 +10,15 @@ import matplotlib.pyplot as plt
 
 class Agent:
     def __init__(self):
-        modelPath = './modelTest9.h5'
-        weightPath = './DQNtest9.h5'
+        modelPath = './model.h5'
+        # modelPath = './modelTest9.h5'
+        # weightPath = './DQNtest9.h5'
         self.dqn = None
         self.loadedModel = models.load_model(modelPath)
         self.dqn = self.build_agent()
         self.dqn = self.build_qn()
         # loadedModel.summary()
-        self.loadedAgent = self.dqn.load_weights(filepath=weightPath)
+        # self.loadedAgent = self.dqn.load_weights(filepath=weightPath)
         
     def predict(self, moisture, chanceofrain):
         prediction = self.dqn.model.predict(np.array([[[moisture, chanceofrain]]]))
@@ -40,7 +41,7 @@ class Agent:
     # Build Agent
     def build_agent(self):
         policy = EpsGreedyQPolicy()
-        memory = SequentialMemory(limit=100000, window_length=1)
+        memory = SequentialMemory(limit=10000, window_length=1)
         self.dqn = DQNAgent(model=self.loadedModel, memory=memory, policy=policy, nb_actions=5,
                        nb_steps_warmup=50000, target_model_update=1e-3)
         return self.dqn
