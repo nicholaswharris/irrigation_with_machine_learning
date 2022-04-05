@@ -5,13 +5,14 @@ main directory files:</br>
      1. app.py is the main program. This should be launched from a Flask environment.</br>
      2. build_model.py is used to create a reinforcement learning model.</br>
      3. loadModel.py is used to simplify loading the model and making predictions.</br>
-     4. senors.ino is the Arduino file that reads data from the sensors.</br>
-     5. testArduino.py is to test reading the Arduino from the Raspberry Pi.</br>
-     6. testRelay.py is to test controlling the relay/water-pump from the Raspberry Pi.</br>
+     4. updateModel.py is used for updating the model's weight after deployment.
+     5. senors.ino is the Arduino file that reads data from the sensors.</br>
+     6. testArduino.py is to test reading the Arduino from the Raspberry Pi.</br>
+     7. testRelay.py is to test controlling the relay/water-pump from the Raspberry Pi.</br>
 
 plant_ML contains python and h5 files:</br>
-      1. DQNTest9.h5 is the most recently trained model.</br>
-      2. modelTest9.h5 is the weights from the most recently trained model.</br>
+      1. DQNTest9.h5 is the file of weights from the most recently trained model (already stored in model-file; not-needed).</br>
+      2. modelTest9.h5 is the most recently trained model (with no retraining).</br>
       3. Gardener.py reads data from the Arduino via serial communication.</br>
       4. loadModel.py is used to simplify loading the model and making predictions.</br>
       5. weather.py is used to call the weather API [OpenWeather](https://openweathermap.org/api) </br>
