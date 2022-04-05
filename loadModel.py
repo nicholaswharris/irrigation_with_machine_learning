@@ -1,3 +1,5 @@
+# This file is used for quickly loading the model to run tests or to make a prediction.
+
 import sys
 from tensorflow.keras import models
 import numpy as np
