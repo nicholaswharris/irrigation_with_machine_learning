@@ -12,7 +12,7 @@ main directory files:</br>
 
 plant_ML contains python and h5 files:</br>
       1. DQNTest9.h5 is the file of weights from the most recently trained model (already stored in model-file; not-needed).</br>
-      2. modelTest9.h5 is the most recently trained model (with no retraining).</br>
+      2. modelTest9.h5 is the most recent model used for deployment; it already contains the weights.</br>
       3. Gardener.py reads data from the Arduino via serial communication.</br>
       4. loadModel.py is used to simplify loading the model and making predictions.</br>
       5. weather.py is used to call the weather API [OpenWeather](https://openweathermap.org/api) </br>
@@ -26,6 +26,16 @@ templates contains http files:</br>
       1. index.html is the main webpage where weather information, model information, etc. is posted.</br>
       2. about.html is the about page giving background info.</br>
 
+Basic Rundown of Program:
+App.py launches the program on a Waitress server (Python package) from a Flask environment.</br>
+After launching, a webpage is now viewable showing weather information, system information, and hosting a few special buttons. </br>
+This page can be viewed on a LAN or through a PiTunnel. Performance is best when viewed locally.</br>
+Actions are committed once a day at 10AM, and the resulting state is observed 12 hours later and 10PM.</br>
+Logs are automatically generated to track moisture, actions taken, the state when the action was taken, and when interfaces buttons were used.</br>
+Once a week on Sunday after 10PM, the data logged from the previous 7 days is fed back into the model to update its weights.</br>
+The old log files are renamed and timestamped, so they are not used again or over-written.</br>
+The old model is also renamed and timesteamped for the same reasons.</br>
+Furthermore, a heat map of the "best actions" is printed before and after each retraining session for visual interpretation.</br>
 
 The bulk of project was built on PC in PyCharm. Afterwards, it was all migrated to a Raspberry Pi 4.
 
